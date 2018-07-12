@@ -36,15 +36,8 @@ class Specinfra::Command::Base::Package < Specinfra::Command::Base
     end
 
     def check_is_installed_by_pip(name, version=nil)
-      regexp = "^#{name}"
-      cmd = "pip list | grep -iw -- #{escape(regexp)}"
-      cmd = "#{cmd} | grep -w -- #{escape(version)}" if version
-      cmd
-    end
-    
-    def check_is_installed_by_pip3(name, version=nil)
       regexp = "^#{name} "
-      cmd = "pip3 list | grep -iw -- #{escape(regexp)}"
+      cmd = "pip list | grep -iw -- #{escape(regexp)}"
       cmd = "#{cmd} | grep -w -- #{escape(version)}" if version
       cmd
     end
